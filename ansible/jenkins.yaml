@@ -1,0 +1,31 @@
+---
+- hosts: jenkinses
+  remote_user: root
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Ensure git is installed
+    apt: name=git state=present
+  - name: Ensure golang is installed
+    apt: 
+      name: golang-1.9
+      state: present
+  - name: Update path
+    copy:
+      dest: /etc/profile.d/custom-path.sh
+      content: 'PATH=$PATH:/usr/lib/go-1.9/bin'
+  - name: Add the Jenkins public GPG key to the apt repo
+    apt_key: url=http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key
+             state=present
+  - name: Install packages and dependencies
+    apt: name={{ item }} update_cache=yes state=present
+    with_items:
+      - default-jdk
+      - libfontconfig
+      - libffi-dev
+      - libncurses5-dev
+  - name: Add Jenkins to the trusted sources list
+    apt_repository: repo='deb http://pkg.jenkins-ci.org/debian binary/'
+                    state=present
+  - name: Install Jenkins server
+    apt: name=jenkins state=installed
