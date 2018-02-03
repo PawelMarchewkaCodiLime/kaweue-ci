@@ -18,8 +18,7 @@ pipeline {
             steps {
                 withEnv(['GOPATH=' + pwd(), 'PATH+=' + pwd() + '/bin/']){
                     dir ('src/github.com/kaweue/api-um-warsaw-client') {
-                        sh 'ginkgo lib/authenticator/'
-               	        sh 'ginkgo lib/client/'
+                        sh 'ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --progress'
                     }
                 }
             }

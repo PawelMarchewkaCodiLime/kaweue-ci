@@ -29,3 +29,11 @@
                     state=present
   - name: Install Jenkins server
     apt: name=jenkins state=installed
+  - name: Install openvpn
+    apt: name=openvpn state=present
+  - name: Firewall ssh
+    ufw: rule=allow port=22
+  - name: Firewall web
+    ufw: rule=allow port=8080
+  - name: Set firewall default policy
+    ufw: state=enabled policy=reject
