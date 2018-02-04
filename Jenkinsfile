@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Preparetion') {
+        stage('Preparation') {
             steps {
                 deleteDir()
                 withEnv(['GOPATH=' + pwd(), 'PATH+=' + pwd() + '/bin/']){
@@ -25,7 +25,6 @@ pipeline {
                 }
             }
         }
-        
         stage('Build') {
             steps {
                 withEnv(['GOPATH=' + pwd(), 'PATH+=' + pwd() + '/bin/']){
