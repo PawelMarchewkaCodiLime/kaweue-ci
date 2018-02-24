@@ -29,7 +29,7 @@ pipeline {
             steps {
                 withEnv(['GOPATH=' + pwd(), 'PATH+=' + pwd() + '/bin/']){
                     dir ('src/github.com/kaweue/api-um-warsaw-client') {
-               	        sh 'go build -v cmd/main.go'
+               	        sh 'go build -v .'
                     }
                 }
             }
