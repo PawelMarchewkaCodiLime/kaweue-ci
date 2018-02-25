@@ -34,5 +34,14 @@ pipeline {
                 }
             }
         }
+        stage('Integration tests') {
+            steps {
+                dir ('src/github.com/kaweue/api-um-warsaw-client') {
+                    withEnv(['PATH+=' + pwd()]){
+                        sh 'python integration_tests/integration.py'
+                    }
+                }
+            }
+        }
     }
 }
