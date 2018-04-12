@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>boost-msvc-14</id>
+    <version>1.62.0</version>
+    <title>boost-msvc-14 (Install)</title>
+    <authors>beman_dawes, danieljames, eric_niebler, mclow, vladimir_prus</authors>
+    <projectUrl>https://sourceforge.net/projects/boost/</projectUrl>
+    <tags>boost-msvc-14 boost</tags>
+    <summary>Boost for MSVC 14.0</summary>
+    <description>Boost for MSVC 14.0</description>
+
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
